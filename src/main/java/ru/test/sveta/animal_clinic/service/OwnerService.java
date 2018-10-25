@@ -1,4 +1,6 @@
 package ru.test.sveta.animal_clinic.service;
 
-public class OwnerService {
+import ru.test.sveta.animal_clinic.ServiceInterface;
+
+public class OwnerService implements ServiceInterface {
 }
