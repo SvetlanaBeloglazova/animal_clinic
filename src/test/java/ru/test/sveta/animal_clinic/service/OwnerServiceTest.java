@@ -24,7 +24,7 @@ public class OwnerServiceTest {
 
     @Before
     public void init(){
-        service = new OwnerService();
+        //service = new OwnerService();
        /* owners = new ArrayList<>();
         testOwner1 = new Owner();
         testOwner1.setID(1);
@@ -48,7 +48,7 @@ public class OwnerServiceTest {
     @Test
     public void addAnimal() {
         service.addAnimal(testOwner1);
-        Assert.assertNotNull();
+        //Assert.assertNotNull();
     }
 
     @Test

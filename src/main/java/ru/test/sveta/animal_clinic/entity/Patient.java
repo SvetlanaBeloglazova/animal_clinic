@@ -16,7 +16,7 @@ public class Patient {
         this.description=description;
         this.Heals=Heals;
     }
-    public Patient(){
+    public Patient(int id, String animal, String name, String description, String heals, int age){
 
     }
 

@@ -8,20 +8,38 @@ import ru.test.sveta.animal_clinic.entity.Owner;
 
 import java.util.List;
 
+@Service
 public class OwnerService implements ServiceInterface<Owner> {
+private final JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public OwnerService(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public void addAnimal(Owner owner) {
-        throw new RuntimeException();
+        String insert = "INSERT INTO owners VALUES ("
+                +owner.getAnimal() + ","
+                + owner.getStatus() + ","
+                + owner.getName() +");";
+        jdbcTemplate.execute(insert);
     }
 
     @Override
     public List<Owner> getAll() {
-        throw new RuntimeException();
+
+        return jdbcTemplate.query("select * from owners", (rs,i) -> new Owner(
+                rs.getInt("id"),
+                rs.getString("animal"),
+                rs.getString("status"),
+                rs.getString("name")
+        ) );
     }
 
     @Override
     public void update(Owner owner) {
-        throw new RuntimeException();
+        jdbcTemplate.update("update owners set animal=? , status=? , name=? where id=?",
+                owner.getAnimal(),owner.getStatus(),owner.getName(),owner.getID());
     }
 }
